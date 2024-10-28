@@ -1,0 +1,33 @@
+@model IEnumerable<EstudiantesMVC.Models.Curso>
+
+@{
+    ViewData["Title"] = "Cursos";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Cursos</h1>
+    <a href="@Url.Action("create")" class="btn btn-primary mb-3">Agregar curso</a>
+    
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Creditos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var curso in Model)
+            {
+                <tr>
+                    <td>@curso.NombreCurso</td>
+                    <td>@curso.Creditos</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = curso.Id })" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="@Url.Action("DeleteConfirmed", new { id = curso.Id })" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

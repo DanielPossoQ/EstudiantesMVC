@@ -1,0 +1,33 @@
+@model IEnumerable<EstudiantesMVC.Models.Matricula>
+
+@{
+    ViewData["Title"] = "Matriculas";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Matriculas</h1>
+    <a href="@Url.Action("create")" class="btn btn-primary mb-3">Agregar Matriculas</a>
+    
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Nombre de curso</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var matriculas in Model)
+            {
+                <tr>
+                    <td>@matriculas.Estudiante.Nombre</td>
+                    <td>@matriculas.Curso.NombreCurso</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = matriculas.Id })" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="@Url.Action("DeleteConfirmed", new { id = matriculas.Id })" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
